@@ -1,4 +1,4 @@
-class Solution:
+class_Solution:
     def addBinary(self, a: str, b: str) -> str:
         list_a = list(a)
         list_b = list(b)
