@@ -35,16 +35,20 @@ def countSwap(s):
         left = i
         right = n - left - 1
 
+        # find the same char from right to left
         while left < right:
             if s[left] == s[right]:
                 break
             right -= 1
 
+        # If left == right means this char is the single character
+        # So we want it swap to the middle
         if left == right:
             s[i], s[i + 1] = s[i + 1], s[i]
             count += 1
             continue
 
+        # Swap the char from right pointer to the mirror position of left
         for j in range(right, n - left - 1):
             s[j], s[j + 1] = s[j + 1], s[j]
             count += 1
@@ -56,9 +60,14 @@ def countSwap(s):
 
 
 if __name__ == '__main__':
-    print(countSwap("aabcb"))   # 3
-    print(countSwap("mamad"))   # 3
-    print(countSwap("asflkj"))  # -1
-    print(countSwap("aabb"))    # 2
-    print(countSwap("ntiin"))   # 1
-    print(countSwap("acccbba")) # 3
+    stacks = [
+        "aabcb",   # 3
+        "mamad",   # 3
+        "asflkj",  # -1
+        "aabb",    # 2
+        "ntiin",   # 1
+        "acccbba", # 3
+    ]
+
+    for s in stacks:
+        print(countSwap(s))
