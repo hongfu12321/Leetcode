@@ -27,5 +27,13 @@ class CustomMap:
 
 
 
+## remove all duplicate elements in list
+test = [1, 3, 5, 6, 3, 5, 6, 1]
+lst1 = []
+[lst1.append(x) for x in test if x not in lst1]
+
+lst2 = list(set(test))
+
+
 # You have a 2d map and coins on this map. Find the most optimal way of traversing the map 
 # while collecting all the coins.

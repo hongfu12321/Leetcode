@@ -53,3 +53,81 @@ def dfs(root):
         ####
         root = root.right
     return -1
+
+
+def printInorder(root):
+ 
+    if root:
+ 
+        # First recur on left child
+        printInorder(root.left)
+ 
+        # then print the data of node
+        print(root.val),
+ 
+        # now recur on right child
+        printInorder(root.right)
+ 
+ 
+# A function to do postorder tree traversal
+def printPostorder(root):
+ 
+    if root:
+ 
+        # First recur on left child
+        printPostorder(root.left)
+ 
+        # the recur on right child
+        printPostorder(root.right)
+ 
+        # now print the data of node
+        print(root.val),
+ 
+ 
+# A function to do preorder tree traversal
+def printPreorder(root):
+ 
+    if root:
+ 
+        # First print the data of node
+        print(root.val),
+ 
+        # Then recur on left child
+        printPreorder(root.left)
+ 
+        # Finally recur on right child
+        printPreorder(root.right)
+
+
+def maxDepth(node):
+    if not node: return 0
+
+    return max(maxDepth(node.left), maxDepth(node.right)) + 1
+
+def getMaxWidth(root):
+    # base case
+    if root is None:
+        return 0
+  
+    q = collections.deque([root])
+    maxWidth = 0
+  
+    while (q != []):
+        # Get the size of queue when the level order
+        # traversal for one level finishes
+        count = len(q)
+  
+        # Update the maximum node count value
+        maxWidth = max(count, maxWidth)
+  
+        while (count is not 0):
+            count = count-1
+            temp = q[-1]
+            q.pop()
+            if temp.left is not None:
+                q.insert(0, temp.left)
+  
+            if temp.right is not None:
+                q.insert(0, temp.right)
+  
+    return maxWidth
