@@ -12,15 +12,11 @@ The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 '''
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        i, j = 0, len(nums) - 1
+        last_odd_idx = 0
         
-        while i < j:
-            while i < len(nums) and nums[i] % 2 == 0:
-                i += 1
-            while j >= 0 and nums[j] % 2 == 1:
-                j -= 1
+        for i in range(len(nums)):
+            if nums[i] % 2 == 0:
+                nums[i], nums[last_odd_idx] = nums[last_odd_idx], nums[i]
+                last_odd_idx += 1
             
-            if  i < j:
-                nums[i], nums[j] = nums[j], nums[i]
-                
         return nums
